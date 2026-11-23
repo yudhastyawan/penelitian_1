@@ -149,12 +149,12 @@ Bootstrap mengambil ulang draw dalam masing-masing komponen. Simpangan baku $`J(
 - **Noise terkendali.** $`N'=N\lVert S\rVert_2/(\lVert N\rVert_2\,10^{\mathrm{SNR}_{\rm dB}/20})`$. Stress-test sumber lemah mengalikan gather aktif dengan $`\sigma[(f-15)/2]\exp(-r/26)`$ untuk $`f`$ dalam Hz dan $`r`$ dalam m. Gain kopling lognormal mempunyai log-mean $`-\sigma_A^2/2`$ agar rata-ratanya satu. Skala latar noise dibandingkan dengan sumber awal pada skenario lemah. [Kode stress-test](../ablation_experiments.py#L266).
 - **Jejak dan visualisasi.** Seleksi jejak memakai node terdekat dari target radial seragam dan lebar setengah wiggle $`0{,}35\min\Delta r_{\rm terpilih}`$. Cadangan KDE memakai $`\widehat f(x)=\sum_i\exp(-\frac12\sum_j[(x_j-x_{ij})/h_j]^2)/(n(2\pi)^{d/2}\prod_j h_j)`$ dengan bandwidth per koordinat $`h_j=(\mathrm{sd}(x_{\cdot j})+10^{-12})\,b`$. SciPy digunakan ketika tersedia. [Kode visualisasi](../visualize.py#L44) · [Dokumentasi SciPy KDE](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html).
 - **Pembanding eksternal.** PyProp8 menggunakan propagator berlapis. Uji compliance memasangkan moduli kompleks dan titik bilangan gelombang. Uji jejak pita aktif memakai kuadratur tersendiri. COMPOSTI memakai solver Levin eksternal. Konjugasi, normalisasi gaya titik, dan kontrol $`\eta`$ serta taper dicatat pada laporan komparasi. [Valentine dan Sambridge, PyProp8](https://doi.org/10.21105/joss.04217) · [Niskanen dan Lähivaara, COMPOSTI](https://doi.org/10.1016/j.softx.2022.101298) · [Laporan COMPOSTI](../diagnostics_review_v6/benchmark_composti/RINGKASAN.md). Kurva Rayleigh untuk overlay dihitung oleh [disba](https://github.com/keurfonluu/disba), dengan $`T=1/f`$ dan konversi satuan; hasil Guided-P kosong pada v6.
-
-- **Dekomposisi residual dan ablasi picking.** Untuk dua irisan nonnol, identitas yang digunakan adalah
-
-  ```math
-  1-\mathrm{NCC}=\frac{1}{2}\left\lVert \frac{o}{\lVert o\rVert_2}-\frac{s}{\lVert s\rVert_2}\right\rVert_2^2.
-  ```
-
-  Skor residual B menjumlahkan suku kuadrat ini pada rentang kecepatan terpisah. Pembandingan noise baru memakai $`\Delta J=J_{\rm pred}-J_{\rm prior}`$ pada observasi yang sama. Ablasi picking minimisasi residual $`(c_{\rm Rayleigh}-c_{\rm pick})/(20\,\mathrm{m/s})`$, dengan substitusi penalti jika kurva tidak dapat dihitung. [Kode dekomposisi](../diagnostics_review_v6/benchmark_b_residual/analyze.py#L63) · [Evaluasi noise baru](../diagnostics_review_v6/benchmark_b_restarts/check_new_noise.py) · [Residual picking](../ablation_experiments.py#L158).
 - **Identitas analitik untuk tes.** Pada half-space homogen, fungsi Rayleigh adalah $`R=\gamma^2-4k^2\nu_p\nu_s`$. Tes memakai $`G_{zz}=-\nu_p(\widetilde\omega^2/\widetilde V_s^2)/(\widetilde\mu R)`$. Untuk kasus homogen dengan $`V_p=2V_s`$, tes tiba Rayleigh menentukan $`x=(c_R/V_s)^2`$ dari akar fisik $`x^3-8x^2+20x-12=0`$ dan memeriksa $`t_0+r/c_R`$. [Dasar gelombang Rayleigh, Aki dan Richards](https://www.ldeo.columbia.edu/~richards/Aki_Richards.html) · [Tes compliance](../tests/test_scientific_regressions.py#L82) · [Tes waktu tiba](../tests/test_reassessment.py#L190).
+
+**Dekomposisi residual dan ablasi picking.** Untuk dua irisan nonnol, identitas yang digunakan adalah
+
+```math
+1-\mathrm{NCC}=\frac{1}{2}\left\lVert \frac{o}{\lVert o\rVert_2}-\frac{s}{\lVert s\rVert_2}\right\rVert_2^2.
+```
+
+Skor residual B menjumlahkan suku kuadrat ini pada rentang kecepatan terpisah. Pembandingan noise baru memakai $`\Delta J=J_{\rm pred}-J_{\rm prior}`$ pada observasi yang sama. Ablasi picking minimisasi residual $`(c_{\rm Rayleigh}-c_{\rm pick})/(20\,\mathrm{m/s})`$, dengan substitusi penalti jika kurva tidak dapat dihitung. [Kode dekomposisi](../diagnostics_review_v6/benchmark_b_residual/analyze.py#L63) · [Evaluasi noise baru](../diagnostics_review_v6/benchmark_b_restarts/check_new_noise.py) · [Residual picking](../ablation_experiments.py#L158).
