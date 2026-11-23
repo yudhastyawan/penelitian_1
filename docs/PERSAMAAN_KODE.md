@@ -14,13 +14,13 @@ $$s_i=\sigma(z_i)=\frac1{1+e^{-z_i}},\qquad m_i=a_i+(b_i-a_i)s_i.$$
 
 Pada koordinat $V_{p,i}$, batas bawah menjadi $a_{p,i}=\max(V_{p,i}^{\min},1.45V_{s,i})$. Transformasi invers menggunakan $\log u_i-\log(1-u_i)$ dengan $u_i=(m_i-a_i)/(b_i-a_i)$. Karena $V_s$ dipetakan lebih dahulu, Jacobian triangular dan diagonalnya $(b_i-a_i)\sigma(z_i)\sigma(-z_i)$. Implementasi log-determinan memakai
 
-$$\log|\det Dm(z)|=\sum_i[\log(b_i-a_i)-\operatorname{softplus}(-z_i)-\operatorname{softplus}(z_i)].$$
+$$\log|\det Dm(z)|=\sum_i[\log(b_i-a_i)-\mathrm{softplus}(-z_i)-\mathrm{softplus}(z_i)].$$
 
 Batas rasio 1,45, ordering parameter, dan densitas serta $Q$ tetap adalah konfigurasi proyek. Faktor Jacobian mengikuti perubahan variabel untuk prior seragam di domain fisik. [Stan Reference Manual, *constraint transforms*](https://mc-stan.org/docs/reference-manual/transforms.html) · [Transformasi v6](../models.py#L197).
 
 ## Geometri dan sampling spasial
 
-Untuk koordinat $(x_i,y_i)$, $r_{ij}=\sqrt{(x_j-x_i)^2+(y_j-y_i)^2}$ dan $\theta_{ij}=\operatorname{atan2}(y_j-y_i,x_j-x_i)$. Ada $N(N-1)/2$ pasangan unik. Untuk stasiun luar nested, $\theta_k=k\pi(3-\sqrt5)+0.35$ dan radius berjarak geometris. Faktor gangguan arah per bin adalah rerata $\cos[2(\theta_{ij}-25^\circ)]$. Metrik geometri mencakup persentase bin radial terisi dan $|\operatorname{mean}\exp(2i\theta_{ij})|$. Angka Nyquist berdasarkan jarak minimum pada array irregular adalah proksi. Untuk spasi reguler, $k\le\pi/\Delta x$ memberi $c\ge2\Delta x f$. [Kode geometri](../forward_mfj.py#L198) · [Pembandingan rancangan](../acquisition_design.py#L125) · [Foti dkk., panduan akuisisi gelombang permukaan](https://doi.org/10.1007/s10518-017-0206-7).
+Untuk koordinat $(x_i,y_i)$, $r_{ij}=\sqrt{(x_j-x_i)^2+(y_j-y_i)^2}$ dan $\theta_{ij}=\mathrm{atan2}(y_j-y_i,x_j-x_i)$. Ada $N(N-1)/2$ pasangan unik. Untuk stasiun luar nested, $\theta_k=k\pi(3-\sqrt5)+0.35$ dan radius berjarak geometris. Faktor gangguan arah per bin adalah rerata $\cos[2(\theta_{ij}-25^\circ)]$. Metrik geometri mencakup persentase bin radial terisi dan $|\mathrm{mean}\exp(2i\theta_{ij})|$. Angka Nyquist berdasarkan jarak minimum pada array irregular adalah proksi. Untuk spasi reguler, $k\le\pi/\Delta x$ memberi $c\ge2\Delta x f$. [Kode geometri](../forward_mfj.py#L198) · [Pembandingan rancangan](../acquisition_design.py#L125) · [Foti dkk., panduan akuisisi gelombang permukaan](https://doi.org/10.1007/s10518-017-0206-7).
 
 ## Compliance P-SV
 
@@ -32,7 +32,7 @@ Cabang akar memiliki bagian riil tidak negatif. Pada partisi $U_{d/u}$ dan $T_{d
 
 $$U_{d/u}=\begin{pmatrix}k&\pm\nu_s\\\pm\nu_p&k\end{pmatrix},\qquad T_{d/u}=-\widetilde\mu\begin{pmatrix}\pm2k\nu_p&\gamma\\\gamma&\pm2k\nu_s\end{pmatrix}.$$
 
-Untuk half-space, $K_N=T_dU_d^{-1}$. Pada lapisan berhingga, $E_j=\operatorname{diag}(e^{-\nu_ph_j},e^{-\nu_sh_j})$, $R_j=-(T_u-K_{j+1}U_u)^{-1}(T_d-K_{j+1}U_d)$, dan $X_j=E_jR_jE_j$. Rekursi dan compliance permukaan adalah
+Untuk half-space, $K_N=T_dU_d^{-1}$. Pada lapisan berhingga, $E_j=\mathrm{diag}(e^{-\nu_ph_j},e^{-\nu_sh_j})$, $R_j=-(T_u-K_{j+1}U_u)^{-1}(T_d-K_{j+1}U_d)$, dan $X_j=E_jR_jE_j$. Rekursi dan compliance permukaan adalah
 
 $$K_j=(T_d+T_uX_j)(U_d+U_uX_j)^{-1},\qquad G_{zz}(\omega,k)=-[K_1^{-1}]_{22}.$$
 
@@ -70,7 +70,7 @@ Hasil dibagi maksimum per frekuensi jika puncaknya cukup besar. Dengan koordinat
 
 Normalisasi kontras memakai $D'=[(D-D_{\min})/(D_{\max}-D_{\min})]^p$ per irisan yang bervariasi. Irisan konstan menjadi nol. Benchmark A/B memakai $p=1.35$, dan komparasi rancangan memakai default $p=1.4$. Bagian dalam overlap memakai irisan native yang tersedia di kedua kanal. Dengan $s=(f-f_{\rm lo})/(f_{\rm hi}-f_{\rm lo})$ pada overlap, $\alpha=\sin^2(\pi s/2)$, sementara $\alpha=0$ di kiri dan 1 di kanan. Bentuk spektrum diukur dengan
 
-$$v_j=\max\left[\left(\frac{\operatorname{mean}_c D'_j}{\max_c D'_j+10^{-12}}\right)^2,10^{-4}\right],\quad
+$$v_j=\max\left[\left(\frac{\mathrm{mean}_c D'_j}{\max_c D'_j+10^{-12}}\right)^2,10^{-4}\right],\quad
 P_a=\frac{a\,\alpha}{v_a},\quad P_p=\frac{p_{\rm avail}(1-\alpha)}{v_p}.$$
 
 $a,p_{\rm avail}$ adalah indikator ketersediaan. Saat hanya satu kanal tersedia, $\alpha$ disesuaikan untuk kanal itu. Bobot $w_a=P_a/(P_a+P_p+10^{-30})$ dan $w_p=P_p/(P_a+P_p+10^{-30})$. Irisan hasil $w_aD'_a+w_pD'_p$ kembali dinormalisasi min–max. Proksi $v_j$ menggunakan **rata-rata**, sesuai kode, dan tidak dikalibrasi sebagai ragam noise. [Aturan fusi proyek](../fusion.py#L91) · [Fusi dan grid native](../fusion.py#L116).
@@ -94,7 +94,7 @@ $$q(z)=\sum_{k=1}^K w_k\mathcal N(z;\mu_k,L_k L_k^\mathsf{T}),\qquad z_k=\mu_k+L
 
 $L_k$ dibangun dari entri bawah dan diagonal positif $\exp(\ell_k)$. Untuk $y_k=L_k^{-1}(z-\mu_k)$, log kontribusi komponen adalah $\ell_k^\ast=\log w_k-\frac d2\log(2\pi)-\sum_i\log L_{k,ii}-y_k^\mathsf{T}y_k/2$. Tanggung jawab $r_k=\exp(\ell_k^\ast-\log\sum_j\exp\ell_j^\ast)$ memberi skor $\nabla_z\log q=\sum_k r_k(-L_k^{-\mathsf T}y_k)$.
 
-ELBO adalah $\mathbb E_q[\log\widetilde\pi(z)-\log q(z)]$ hingga konstanta. Dengan $v=\nabla_z(\log\widetilde\pi-\log q)$, kontribusi gradien pathwise adalah $v$ untuk mean dan $v\epsilon^\mathsf{T}$ untuk Cholesky. Diagonal log memakai aturan rantai $d(\exp\ell)/d\ell=\exp\ell$. Vektor Stein $\theta_k$ berisi mean, log-diagonal, dan segitiga bawah ketat. Dengan $k(\theta_j,\theta_i)=\exp(-\|\theta_j-\theta_i\|^2/h)$, $h=\max[\operatorname{median}_{j<i}\|\theta_j-\theta_i\|^2/\log(K+1),10^{-8}]$, pembaruannya
+ELBO adalah $\mathbb E_q[\log\widetilde\pi(z)-\log q(z)]$ hingga konstanta. Dengan $v=\nabla_z(\log\widetilde\pi-\log q)$, kontribusi gradien pathwise adalah $v$ untuk mean dan $v\epsilon^\mathsf{T}$ untuk Cholesky. Diagonal log memakai aturan rantai $d(\exp\ell)/d\ell=\exp\ell$. Vektor Stein $\theta_k$ berisi mean, log-diagonal, dan segitiga bawah ketat. Dengan $k(\theta_j,\theta_i)=\exp(-\|\theta_j-\theta_i\|^2/h)$, $h=\max[\mathrm{median}_{j<i}\|\theta_j-\theta_i\|^2/\log(K+1),10^{-8}]$, pembaruannya
 
 $$\Phi_i=K^{-1}\sum_j [k(\theta_j,\theta_i)\,g_j+\alpha\nabla_{\theta_j}k(\theta_j,\theta_i)].$$
 
@@ -109,17 +109,17 @@ Stretch move untuk walker $x$ dengan pasangan $z_j$ memakai $y=z_j+\zeta(x-z_j)$
 Untuk $n$ draw seimbang pada setiap komponen aktif, $\overline D_k=n^{-1}\sum_i D_{ki}$. Estimator prediksi, ragam Monte Carlo atas mean, dan ragam respons campuran adalah
 
 $$\widehat D=\sum_k w_k\overline D_k,\qquad
-\widehat{\operatorname{Var}}_{\rm MC}(\widehat D)=\sum_k w_k^2\widehat{\operatorname{Var}}(D_k)/n,\qquad
+\widehat{\mathrm{Var}}_{\rm MC}(\widehat D)=\sum_k w_k^2\widehat{\mathrm{Var}}(D_k)/n,\qquad
 V_{\rm respons}=\left[\sum_k w_k\,\overline{D_k^2}-\widehat D^2\right]_+.$$
 
 Bootstrap mengambil ulang draw dalam masing-masing komponen. Simpangan baku $J(\widehat D)$ antar-bootstrap memberi galat Monte Carlo misfit. Kode mengecek RMS galat mean citra, galat misfit, dan selisih misfit dengan setengah draw. Jumlah draw bertambah hingga syarat presisi terpenuhi atau anggaran habis. Besaran ini kondisional pada campuran yang sudah difit. [Efron (1979), bootstrap](https://doi.org/10.1214/aos/1176344552) · [Implementasi](../posterior_prediction.py#L11).
 
 ## Metrik diagnostik
 
-- **Profil kedalaman.** Dengan $e(z)=(\overline V_s(z)-V_s^\star(z))/V_s^\star(z)$, $\mathrm{RMSE}_{\rm rel}(\%)=100\sqrt{\operatorname{mean}_z e(z)^2}$ dan $\mathrm{MAPE}(\%)=100\operatorname{mean}_z|e(z)|$. [Kode metrik profil](../ablation_experiments.py#L23).
-- **Citra dan jejak.** Galat relatif L2 adalah $\|x-x_{\rm ref}\|_2/\|x_{\rm ref}\|_2$. Untuk jarak citra, MAE memakai $\operatorname{mean}|D-D_{\rm ref}|$. NCC pada uji geometri memakai cosine similarity atas seluruh jendela overlap terhadap citra bebas noise dari kombinasi yang sama. [Komparasi geometri](../acquisition_design.py#L225) · [Komparasi COMPOSTI](../diagnostics_review_v6/benchmark_composti/compare.py#L89).
+- **Profil kedalaman.** Dengan $e(z)=(\overline V_s(z)-V_s^\star(z))/V_s^\star(z)$, $\mathrm{RMSE}_{\rm rel}(\%)=100\sqrt{\mathrm{mean}_z e(z)^2}$ dan $\mathrm{MAPE}(\%)=100\mathrm{mean}_z|e(z)|$. [Kode metrik profil](../ablation_experiments.py#L23).
+- **Citra dan jejak.** Galat relatif L2 adalah $\|x-x_{\rm ref}\|_2/\|x_{\rm ref}\|_2$. Untuk jarak citra, MAE memakai $\mathrm{mean}|D-D_{\rm ref}|$. NCC pada uji geometri memakai cosine similarity atas seluruh jendela overlap terhadap citra bebas noise dari kombinasi yang sama. [Komparasi geometri](../acquisition_design.py#L225) · [Komparasi COMPOSTI](../diagnostics_review_v6/benchmark_composti/compare.py#L89).
 - **Noise terkendali.** $N'=N\|S\|_2/(\|N\|_2\,10^{\mathrm{SNR}_{\rm dB}/20})$. Stress-test sumber lemah mengalikan gather aktif dengan $\sigma[(f-15)/2]\exp(-r/26)$ untuk $f$ dalam Hz dan $r$ dalam m. Gain kopling lognormal mempunyai log-mean $-\sigma_A^2/2$ agar rata-ratanya satu. Skala latar noise dibandingkan dengan sumber awal pada skenario lemah. [Kode stress-test](../ablation_experiments.py#L266).
-- **Jejak dan visualisasi.** Seleksi jejak memakai node terdekat dari target radial seragam dan lebar setengah wiggle $0{,}35\min\Delta r_{\rm terpilih}$. Cadangan KDE memakai $\widehat f(x)=\sum_i\exp(-\frac12\sum_j[(x_j-x_{ij})/h_j]^2)/(n(2\pi)^{d/2}\prod_j h_j)$ dengan bandwidth per koordinat $h_j=(\operatorname{sd}(x_{\cdot j})+10^{-12})\,b$. SciPy digunakan ketika tersedia. [Kode visualisasi](../visualize.py#L44) · [Dokumentasi SciPy KDE](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html).
+- **Jejak dan visualisasi.** Seleksi jejak memakai node terdekat dari target radial seragam dan lebar setengah wiggle $0{,}35\min\Delta r_{\rm terpilih}$. Cadangan KDE memakai $\widehat f(x)=\sum_i\exp(-\frac12\sum_j[(x_j-x_{ij})/h_j]^2)/(n(2\pi)^{d/2}\prod_j h_j)$ dengan bandwidth per koordinat $h_j=(\mathrm{sd}(x_{\cdot j})+10^{-12})\,b$. SciPy digunakan ketika tersedia. [Kode visualisasi](../visualize.py#L44) · [Dokumentasi SciPy KDE](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gaussian_kde.html).
 - **Pembanding eksternal.** PyProp8 menggunakan propagator berlapis. Uji compliance memasangkan moduli kompleks dan titik bilangan gelombang. Uji jejak pita aktif memakai kuadratur tersendiri. COMPOSTI memakai solver Levin eksternal. Konjugasi, normalisasi gaya titik, dan kontrol $\eta$ serta taper dicatat pada laporan komparasi. [Valentine dan Sambridge, PyProp8](https://doi.org/10.21105/joss.04217) · [Niskanen dan Lähivaara, COMPOSTI](https://doi.org/10.1016/j.softx.2022.101298) · [Laporan COMPOSTI](../diagnostics_review_v6/benchmark_composti/RINGKASAN.md). Kurva Rayleigh untuk overlay dihitung oleh [disba](https://github.com/keurfonluu/disba), dengan $T=1/f$ dan konversi satuan; hasil Guided-P kosong pada v6.
 
 - **Dekomposisi residual dan ablasi picking.** Untuk dua irisan nonnol, $1-\mathrm{NCC}=\frac12\|o/\|o\|_2-s/\|s\|_2\|_2^2$. Skor residual B menjumlahkan suku kuadrat ini pada rentang kecepatan terpisah. Pembandingan noise baru memakai $\Delta J=J_{\rm pred}-J_{\rm prior}$ pada observasi yang sama. Ablasi picking minimisasi residual $(c_{\rm Rayleigh}-c_{\rm pick})/(20\,\mathrm{m/s})$, dengan substitusi penalti jika kurva tidak dapat dihitung. [Kode dekomposisi](../diagnostics_review_v6/benchmark_b_residual/analyze.py#L63) · [Evaluasi noise baru](../diagnostics_review_v6/benchmark_b_restarts/check_new_noise.py) · [Residual picking](../ablation_experiments.py#L158).
