@@ -109,5 +109,12 @@ model, ketidakpastian noise, dan validasi posterior.
 - Referensi pembanding adalah versi tanpa noise dari transformasi/geometri
   masing-masing; metrik ini mengukur ketahanan noise, bukan peringkat metode.
 
-Persamaan implementasi terdapat di `MATHEMATICAL_FORMULATION.md`. Tujuan
-penelitian dalam `PHD_RESEARCH_PROPOSAL.md` tetap memerlukan bukti tambahan.
+## Referensi fungsi dan persamaan
+
+- [Indeks fungsi](docs/REFERENSI_FUNGSI.md) menghubungkan peran setiap fungsi
+  dengan definisi kode, persamaan yang diterapkan, dan rujukannya.
+- [Persamaan sesuai implementasi](docs/PERSAMAAN_KODE.md) memuat formula untuk
+  sintesis P–SV, MFJ, fusi, target inversi, SMVI, dan verifikasi.
+
+Ringkasan formulasi tersedia di [MATHEMATICAL_FORMULATION.md](MATHEMATICAL_FORMULATION.md).
+Tujuan penelitian dan rencana validasi ada di [proposal](PHD_RESEARCH_PROPOSAL.md).
