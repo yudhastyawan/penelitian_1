@@ -1,0 +1,21 @@
+{
+  "DIAGNOSTIC_EDITORIAL_NOTES.md": "79162e244c4157102bb4f744e30f57032800b9cbba81780e92f06bf720196d82",
+  "DIAGNOSTIC_VERIFICATION_REPORT.md": "235adb271691c868e7920941f22a5664f3c16ff2ef8a70d178bed646f6706b03",
+  "benchmark_a_fig1_waveforms_and_fusion.png": "88873e44fdba8e881aa2f934f2b8ab1cfc51174ba5d67f38c48cc620b3bb6a71",
+  "benchmark_a_fig2_fc_spectrum_comparison.png": "505eefce423c879426b928a5e36175844bfdb2d5049cf5cd55af3d365b02ea87",
+  "benchmark_a_fig3_posterior_profiles_and_marginals.png": "c285e0f2ea6be51ee931260d6d65cd65b19001d634510d2ef01388c37480e11c",
+  "benchmark_a_inference.npz": "8e5aa66fe681ca229aa55ddb8474b986526d0d2eb283073add000fe22b4f58a8",
+  "benchmark_a_inference.npz.json": "ce3682a12208ce531c2d5acc5a818a58bcef6c5f49ca53650c0bb769c1b51ab3",
+  "benchmark_a_observations.npz": "68e78a45519d5da5c09128f8a9ba837880d28c29eca0317ab751434138bcb4b5",
+  "benchmark_b_fig1_waveforms_and_fusion.png": "93861038f3f684ef8ac55a805164c3fee8c8e89edb5d6b37f28845c3ce65c389",
+  "benchmark_b_fig2_fc_spectrum_comparison.png": "df5a935696db7e55a07742a3334b5f0ad9254d73a87e9cd1ed7bc343b48f5e2f",
+  "benchmark_b_fig3_posterior_profiles_and_marginals.png": "5c426ca0a66ec1c8c20acc90edc8f5b804a140d7d5194c0eef785199a4385cbc",
+  "benchmark_b_inference.npz": "769c37d1fa1fd4c8ee53e4387a90c899ffe1e00029089b11c3c67ca8300515fe",
+  "benchmark_b_inference.npz.json": "eb76c54c63990c50b36489b6d30aa80ad7741208fd07040d54ee5b57a2cc05b4",
+  "benchmark_b_observations.npz": "38a0104fba3964db93072d1e0554f3389495af97bae1d502477a6bd92b8314b4",
+  "benchmark_verification_summary.json": "e64baf5eda7e1e370d7bd04244a8bc2a55967174366d4fdb7478ecf489cdca02",
+  "execution.log": "0c996f5162c754219ef5e500432b66946eaa61f2a180c6ab2164e9c5aa04a530",
+  "fig0_field_acquisition_design_comparison.png": "4c12fc9524b05b0cc3252ab04583dff36d07d445ec25f94197ac7064775b03a7",
+  "fig0b_dispersion_image_comparison.png": "7daeecbcb42fbfc3fb2b4f52c3d50334eeb98f56124fd4018673a225db81ecf5",
+  "run_manifest.json": "ce611545560a4d87479b47196820f5b2bc9f99a6b4f4b0e0c734478b5065ecae"
+}

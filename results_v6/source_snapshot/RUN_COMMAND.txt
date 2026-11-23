@@ -1,0 +1,1 @@
+OPENBLAS_NUM_THREADS=1 MPLCONFIGDIR=/tmp/mfj-fixes-mpl .venv/bin/python -u run_benchmark.py --quick --iterations 60 --components 4 --mc-samples 4 --refinement-steps 30 --benchmarks-only --parallel-benchmarks --output-dir results_v6

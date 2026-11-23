@@ -1,0 +1,801 @@
+{
+  "version": "v6_followup_fixes",
+  "status": "completed",
+  "run_started_utc": "2026-11-21T10:19:34.201121+00:00",
+  "mode": "quick_verification",
+  "parallel_benchmarks": true,
+  "config": {
+    "n_components": 4,
+    "n_iterations": 60,
+    "n_mc_samples_per_comp": 4,
+    "lr_mean": 0.04,
+    "lr_chol": 0.015,
+    "sigma_likelihood": 0.08,
+    "wasserstein_weight": 0.35,
+    "repulsion_strength": 0.2,
+    "entropy_weight": 1.0,
+    "n_posterior_draws": 1200,
+    "random_seed": 2026,
+    "passive_cutoff_hz": 12.0,
+    "passive_velocity_max": 680.0,
+    "gradient_backend": "autodiff",
+    "initialization_refinement_steps": 30,
+    "wasserstein_scale_mps": null,
+    "predictive_draws": 128,
+    "predictive_max_draws": 512,
+    "predictive_bootstrap_repeats": 32,
+    "predictive_mc_tolerance": 0.01
+  },
+  "frequency_grids": {
+    "active": [
+      8.0,
+      8.5,
+      9.0,
+      9.5,
+      10.0,
+      10.5,
+      11.0,
+      11.5,
+      12.0,
+      14.0,
+      16.0,
+      18.0,
+      20.0,
+      22.0,
+      24.0,
+      26.0,
+      28.0,
+      30.0,
+      32.0,
+      34.0,
+      36.0,
+      38.0,
+      40.0,
+      42.0,
+      44.0,
+      46.0,
+      48.0,
+      50.0,
+      52.0,
+      54.0,
+      55.0
+    ],
+    "passive": [
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      3.5,
+      4.0,
+      4.5,
+      5.0,
+      5.5,
+      6.0,
+      6.5,
+      7.0,
+      7.5,
+      8.0,
+      8.5,
+      9.0,
+      9.5,
+      10.0,
+      10.5,
+      11.0,
+      11.5,
+      12.0
+    ]
+  },
+  "quadrature_density": 2.0,
+  "source_sha256": {
+    "ablation_experiments.py": "6c5795458b51f97e503c3ed016e10031f65fc08563c2820308c34e33bd5addf2",
+    "acquisition_design.py": "06376bbb2988dc2d35131fe993325600962d2dea1060b3d4293ae6f57382f9fa",
+    "autodiff_likelihood.py": "de46ae99ba71e2cf01f22842cca49cc489fa95561f6aede726e280d2da2facc9",
+    "environment.yml": "bb92905b9e6f49909a89bf27e7a9b891987decbcba2081b0adb8138435a93dd8",
+    "forward_mfj.py": "8c515cd5b071a63b2d12ac43437ed82d7ec5dc16abe74649d38f117325701150",
+    "fusion.py": "c5b51c94432e2820276086d8a7832b17eb21eb3de88e822e47d20d48d7a961ac",
+    "generate_pdf_manuscript.py": "98a4a9f62e58ff63205d0548d51b2551574df746300244578cd537d48764f5f9",
+    "models.py": "424e820c494a6875808fa3c0a7fc8ceef7f6c8effe070c5e18675e1e19e34ee3",
+    "posterior_prediction.py": "70c0bc17f720f0137ed3155c37dc2383b8b155d4b4e67c8b519ee53b4893abef",
+    "replot_saved_results.py": "0317789482588ac52df8065157f00dddf2e525a06a148950107cb9619ed6dd41",
+    "requirements-lock.txt": "3ef1083e101d359c785c6900b7c3951667d0314c50d8b2bede634362a122ceee",
+    "requirements.txt": "fd5e99a30390aaf165611418685e0a1bb5e60f5f5bb5b695761457756c1e4232",
+    "research_quality.py": "bff6dad38ed09fb62eb827f9e0257ecc1761ca40318d233e5cee496d66f85735",
+    "run_benchmark.py": "cdd3adc6a2c4aac02331a01eb5ecace37f60cfc3a9237b3f49c8c33beb3ea654",
+    "smvi_inversion.py": "63f281e12a9401378bb2354f4050d763ee3a09dbcf065626647b90782222289b",
+    "tests/test_followup_fixes.py": "0794f35e62d1953b20f368977c9e72637b99ce1eea9fc3b285cc8ddd1c8d3c29",
+    "tests/test_reassessment.py": "f330a300d6fb03bacb258144ae7d6b4eff50cb5255b01a26c1db04053f57f899",
+    "tests/test_scientific_regressions.py": "1ef2982c0b7dcbb94f9280da4dcdcabab3043df8426a1cc84301874030de4cfe",
+    "validate_reassessment.py": "4916cf0ca9cf9044b91debcb0357cef202f903f0785623ea9bf31f9dfca029d5",
+    "visualize.py": "6bfaddf1bea987c58385322c0b5c26b6174d90db1be5d0bed3498baff82a4434"
+  },
+  "environment": {
+    "python": "3.10.9 (main, Mar  8 2023, 04:44:30) [Clang 14.0.6 ]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "numba": true,
+    "disba": true,
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "numba": "0.63.1",
+      "matplotlib": "3.10.9",
+      "disba": "0.7.0",
+      "torch": "2.11.0",
+      "pyprop8": "1.1.5"
+    }
+  },
+  "limitations": [
+    "Synthetic generation and inversion share the Green solver.",
+    "Passive EGF noise is phenomenological; no ambient-source interferometry simulation.",
+    "SMVI and its intervals are experimental and not calibrated.",
+    "No global MAP, independent field validation, or speedup claim is made."
+  ],
+  "total_runtime_sec": 1994.1744830608368,
+  "benchmark_a": {
+    "benchmark_name": "Benchmark A: Low-Velocity Layer (Mode-Jumping & Osculation Test)",
+    "config": {
+      "n_components": 4,
+      "n_iterations": 60,
+      "n_mc_samples_per_comp": 4,
+      "lr_mean": 0.04,
+      "lr_chol": 0.015,
+      "sigma_likelihood": 0.08,
+      "wasserstein_weight": 0.35,
+      "repulsion_strength": 0.2,
+      "entropy_weight": 1.0,
+      "n_posterior_draws": 1200,
+      "random_seed": 2026,
+      "passive_cutoff_hz": 12.0,
+      "passive_velocity_max": 680.0,
+      "gradient_backend": "autodiff",
+      "initialization_refinement_steps": 30,
+      "wasserstein_scale_mps": 169.2,
+      "predictive_draws": 128,
+      "predictive_max_draws": 512,
+      "predictive_bootstrap_repeats": 32,
+      "predictive_mc_tolerance": 0.01
+    },
+    "parameters": {
+      "Vs_1": {
+        "true": 260.0,
+        "posterior_mean": 271.14455961060236,
+        "posterior_std": 23.676983548527375,
+        "best_component": 261.23321238914684,
+        "ci95_low": 232.8741107632766,
+        "ci95_high": 318.67241263325064,
+        "rel_error_pct": 4.286369081000907,
+        "covered_by_95ci": true
+      },
+      "Vs_2": {
+        "true": 150.0,
+        "posterior_mean": 148.9340210281343,
+        "posterior_std": 15.506105403481854,
+        "best_component": 144.12523220171317,
+        "ci95_low": 121.78243090094423,
+        "ci95_high": 177.9785029171997,
+        "rel_error_pct": 0.7106526479104597,
+        "covered_by_95ci": true
+      },
+      "Vs_3": {
+        "true": 390.0,
+        "posterior_mean": 412.7912432441458,
+        "posterior_std": 40.50413582397738,
+        "best_component": 372.91340301290495,
+        "ci95_low": 339.8848505049123,
+        "ci95_high": 482.8862144241905,
+        "rel_error_pct": 5.843908524139946,
+        "covered_by_95ci": true
+      },
+      "Vs_4": {
+        "true": 680.0,
+        "posterior_mean": 669.067343370812,
+        "posterior_std": 82.03572821845925,
+        "best_component": 692.3144317190895,
+        "ci95_low": 520.4499219543287,
+        "ci95_high": 811.1195521477848,
+        "rel_error_pct": 1.6077436219394183,
+        "covered_by_95ci": true
+      },
+      "Vp_1": {
+        "true": 540.0,
+        "posterior_mean": 563.135586495194,
+        "posterior_std": 62.40323793671903,
+        "best_component": 497.5746483803038,
+        "ci95_low": 461.70000211167684,
+        "ci95_high": 671.7308738166671,
+        "rel_error_pct": 4.284367869480379,
+        "covered_by_95ci": true
+      },
+      "Vp_2": {
+        "true": 480.0,
+        "posterior_mean": 542.5946482437837,
+        "posterior_std": 79.96741179374797,
+        "best_component": 480.99238994346734,
+        "ci95_low": 429.6509427244798,
+        "ci95_high": 692.6909580838092,
+        "rel_error_pct": 13.040551717454937,
+        "covered_by_95ci": true
+      },
+      "Vp_3": {
+        "true": 880.0,
+        "posterior_mean": 938.2560926861202,
+        "posterior_std": 83.59696673925517,
+        "best_component": 861.6692159306882,
+        "ci95_low": 785.0374406789734,
+        "ci95_high": 1097.2225422743286,
+        "rel_error_pct": 6.620010532513654,
+        "covered_by_95ci": true
+      },
+      "Vp_4": {
+        "true": 1480.0,
+        "posterior_mean": 1550.561589278081,
+        "posterior_std": 205.771335052541,
+        "best_component": 1495.148992261114,
+        "ci95_low": 1203.1171727661124,
+        "ci95_high": 1868.0842015638073,
+        "rel_error_pct": 4.767674951221696,
+        "covered_by_95ci": true
+      },
+      "h_1": {
+        "true": 4.0,
+        "posterior_mean": 4.43328775159835,
+        "posterior_std": 0.49259163597886907,
+        "best_component": 4.180785547472446,
+        "ci95_low": 3.55586625701016,
+        "ci95_high": 5.4015344181403755,
+        "rel_error_pct": 10.832193789958744,
+        "covered_by_95ci": true
+      },
+      "h_2": {
+        "true": 6.0,
+        "posterior_mean": 6.511542834998529,
+        "posterior_std": 1.230729343423923,
+        "best_component": 5.434586955969441,
+        "ci95_low": 4.62574637839426,
+        "ci95_high": 8.905802952861649,
+        "rel_error_pct": 8.525713916642156,
+        "covered_by_95ci": true
+      },
+      "h_3": {
+        "true": 14.0,
+        "posterior_mean": 15.24509786467158,
+        "posterior_std": 2.2447417047436455,
+        "best_component": 15.005456187258519,
+        "ci95_low": 11.050320908024222,
+        "ci95_high": 18.99055625947887,
+        "rel_error_pct": 8.893556176225571,
+        "covered_by_95ci": true
+      }
+    },
+    "mean_model_metrics": {
+      "misfit": 0.6374174160515531,
+      "ncc_similarity": 0.780329846176737,
+      "wasserstein_w2_mps": 201.14412881394347
+    },
+    "best_component_metrics": {
+      "misfit": 0.2335152101261542,
+      "ncc_similarity": 0.9067875161850028,
+      "wasserstein_w2_mps": 118.93176395980203
+    },
+    "predictive_metrics": {
+      "misfit": 0.2976356401120396,
+      "ncc_similarity": 0.8680766579992989,
+      "wasserstein_w2_mps": 131.64880531398052,
+      "draws": 256,
+      "component_draw_counts": [
+        64,
+        64,
+        64,
+        64
+      ],
+      "misfit_mc_se": 0.006747039117444793,
+      "misfit_mc_resampling_interval95": [
+        0.2872993389042141,
+        0.30910767699962677
+      ],
+      "mean_spectrum_mc_se_rms": 0.008358127972966492,
+      "precision_target": 0.01,
+      "precision_target_met": true,
+      "bootstrap_repeats": 32,
+      "sampling": "equal draws per component, component means combined with mixture weights",
+      "scope": "Monte Carlo precision conditional on fitted mixture; not posterior calibration",
+      "precision_history": [
+        {
+          "draws": 128,
+          "misfit": 0.3054627628425494,
+          "misfit_mc_se": 0.008007545423982824,
+          "mean_spectrum_mc_se_rms": 0.01178350197319035,
+          "nested_half_misfit_difference": 0.012246461302031109,
+          "precision_target_met": false
+        },
+        {
+          "draws": 256,
+          "misfit": 0.2976356401120396,
+          "misfit_mc_se": 0.006747039117444793,
+          "mean_spectrum_mc_se_rms": 0.008358127972966492,
+          "nested_half_misfit_difference": 0.007827122730509839,
+          "precision_target_met": true
+        }
+      ]
+    },
+    "optimization_diagnostics": {
+      "converged": false,
+      "status": "requires_independent_restarts_and_budget_study",
+      "initialization_refinement": [
+        {
+          "success": false,
+          "iterations": 30,
+          "objective": -25.78646434413477
+        },
+        {
+          "success": false,
+          "iterations": 30,
+          "objective": 5.428335874391877
+        },
+        {
+          "success": false,
+          "iterations": 30,
+          "objective": -6.512388522912371
+        },
+        {
+          "success": false,
+          "iterations": 30,
+          "objective": 3.244700760414048
+        }
+      ]
+    },
+    "baseline_comparison": {
+      "prior_midpoint": {
+        "misfit": 0.3694319105504493,
+        "ncc_similarity": 0.7913616833744423,
+        "wasserstein_w2_mps": 138.29433264588351,
+        "vs_profile_relative_rmse_pct": 15.431769026211137,
+        "vs_profile_mape_pct": 6.113906485671191
+      },
+      "truth_model_evaluation_only": {
+        "misfit": 0.17391184626967587,
+        "ncc_similarity": 0.9436665362407017,
+        "wasserstein_w2_mps": 105.97266282993117
+      },
+      "warnings": [
+        "mean_model_fit_worse_than_prior_midpoint"
+      ],
+      "validation_forward_evaluations": 2,
+      "scope": "A prior midpoint is a point baseline, not an independently calibrated posterior."
+    },
+    "empirical_parameter_coverage": "11/11",
+    "coverage_caveat": "Coverage across parameters of one synthetic model is not repeated-data calibration.",
+    "forward_evaluations": 1427,
+    "elapsed_sec": 1681.9055280685425,
+    "vs_profile_relative_rmse_pct": 14.088334958879829,
+    "vs_profile_mape_pct": 9.792263482585442
+  },
+  "benchmark_b": {
+    "benchmark_name": "Benchmark B: Shallow Groundwater Table (Guided-P Sensitivity Test)",
+    "config": {
+      "n_components": 4,
+      "n_iterations": 60,
+      "n_mc_samples_per_comp": 4,
+      "lr_mean": 0.04,
+      "lr_chol": 0.015,
+      "sigma_likelihood": 0.08,
+      "wasserstein_weight": 0.35,
+      "repulsion_strength": 0.2,
+      "entropy_weight": 1.0,
+      "n_posterior_draws": 1200,
+      "random_seed": 2027,
+      "passive_cutoff_hz": 12.0,
+      "passive_velocity_max": 680.0,
+      "gradient_backend": "autodiff",
+      "initialization_refinement_steps": 30,
+      "wasserstein_scale_mps": 348.0,
+      "predictive_draws": 128,
+      "predictive_max_draws": 512,
+      "predictive_bootstrap_repeats": 32,
+      "predictive_mc_tolerance": 0.01
+    },
+    "parameters": {
+      "Vs_1": {
+        "true": 175.0,
+        "posterior_mean": 186.3460233705803,
+        "posterior_std": 30.034964670411522,
+        "best_component": 189.0239787855184,
+        "ci95_low": 132.73169517410378,
+        "ci95_high": 234.48794615751046,
+        "rel_error_pct": 6.4834419260458835,
+        "covered_by_95ci": true
+      },
+      "Vs_2": {
+        "true": 235.0,
+        "posterior_mean": 239.25923332749642,
+        "posterior_std": 29.491982627475295,
+        "best_component": 214.7233558223159,
+        "ci95_low": 187.01442175990002,
+        "ci95_high": 290.9469350388908,
+        "rel_error_pct": 1.8124397138282629,
+        "covered_by_95ci": true
+      },
+      "Vs_3": {
+        "true": 350.0,
+        "posterior_mean": 354.84328074313987,
+        "posterior_std": 33.89215893821271,
+        "best_component": 348.5908212513647,
+        "ci95_low": 290.6941182495381,
+        "ci95_high": 418.74334438738174,
+        "rel_error_pct": 1.3837944980399632,
+        "covered_by_95ci": true
+      },
+      "Vs_4": {
+        "true": 590.0,
+        "posterior_mean": 603.5396814206557,
+        "posterior_std": 66.41462041895221,
+        "best_component": 566.970676754984,
+        "ci95_low": 477.5675453833176,
+        "ci95_high": 717.560996817848,
+        "rel_error_pct": 2.294861257738256,
+        "covered_by_95ci": true
+      },
+      "Vp_1": {
+        "true": 550.0,
+        "posterior_mean": 627.6880917242032,
+        "posterior_std": 70.4921129764207,
+        "best_component": 577.9855359015098,
+        "ci95_low": 517.9070642459069,
+        "ci95_high": 764.0991349523933,
+        "rel_error_pct": 14.125107586218768,
+        "covered_by_95ci": true
+      },
+      "Vp_2": {
+        "true": 1650.0,
+        "posterior_mean": 1703.192771529583,
+        "posterior_std": 204.64607091849538,
+        "best_component": 1599.5584728238505,
+        "ci95_low": 1350.4939862478836,
+        "ci95_high": 2024.6417368686978,
+        "rel_error_pct": 3.2238043351262466,
+        "covered_by_95ci": true
+      },
+      "Vp_3": {
+        "true": 1780.0,
+        "posterior_mean": 1507.6426222698333,
+        "posterior_std": 98.82419140475905,
+        "best_component": 1397.6909158325952,
+        "ci95_low": 1369.929231199581,
+        "ci95_high": 1748.1099368711637,
+        "rel_error_pct": 15.300976276975657,
+        "covered_by_95ci": false
+      },
+      "Vp_4": {
+        "true": 1980.0,
+        "posterior_mean": 2153.948541301499,
+        "posterior_std": 160.53264160421773,
+        "best_component": 1937.7848446263702,
+        "ci95_low": 1803.0780310553614,
+        "ci95_high": 2377.3434158400473,
+        "rel_error_pct": 8.785279863712073,
+        "covered_by_95ci": true
+      },
+      "h_1": {
+        "true": 3.5,
+        "posterior_mean": 4.14377802843962,
+        "posterior_std": 0.5553819289140844,
+        "best_component": 3.7172460772662372,
+        "ci95_low": 3.1927818107249006,
+        "ci95_high": 5.220744093916479,
+        "rel_error_pct": 18.393657955417705,
+        "covered_by_95ci": true
+      },
+      "h_2": {
+        "true": 6.5,
+        "posterior_mean": 6.941932341668676,
+        "posterior_std": 1.6316129025443695,
+        "best_component": 5.039672446179222,
+        "ci95_low": 4.3494815211426605,
+        "ci95_high": 9.5838936863054,
+        "rel_error_pct": 6.798959102595015,
+        "covered_by_95ci": true
+      },
+      "h_3": {
+        "true": 14.0,
+        "posterior_mean": 15.232050634263937,
+        "posterior_std": 2.6498702178998697,
+        "best_component": 14.702974284773315,
+        "ci95_low": 10.65672654954315,
+        "ci95_high": 19.60168284989925,
+        "rel_error_pct": 8.800361673313832,
+        "covered_by_95ci": true
+      }
+    },
+    "mean_model_metrics": {
+      "misfit": 0.378673352004771,
+      "ncc_similarity": 0.8048020172474734,
+      "wasserstein_w2_mps": 295.1674628510084
+    },
+    "best_component_metrics": {
+      "misfit": 0.3415659988990893,
+      "ncc_similarity": 0.7730571382856158,
+      "wasserstein_w2_mps": 259.122758108348
+    },
+    "predictive_metrics": {
+      "misfit": 0.46370034630557255,
+      "ncc_similarity": 0.8106725308655718,
+      "wasserstein_w2_mps": 343.3139452648211,
+      "draws": 512,
+      "component_draw_counts": [
+        128,
+        128,
+        128,
+        128
+      ],
+      "misfit_mc_se": 0.007017714935311411,
+      "misfit_mc_resampling_interval95": [
+        0.4549038654133423,
+        0.4766546937850171
+      ],
+      "mean_spectrum_mc_se_rms": 0.0046406844407953455,
+      "precision_target": 0.01,
+      "precision_target_met": true,
+      "bootstrap_repeats": 32,
+      "sampling": "equal draws per component, component means combined with mixture weights",
+      "scope": "Monte Carlo precision conditional on fitted mixture; not posterior calibration",
+      "precision_history": [
+        {
+          "draws": 128,
+          "misfit": 0.44823033200724277,
+          "misfit_mc_se": 0.011909651896918377,
+          "mean_spectrum_mc_se_rms": 0.009206598001005026,
+          "nested_half_misfit_difference": 0.01405231428965692,
+          "precision_target_met": false
+        },
+        {
+          "draws": 256,
+          "misfit": 0.4617529742759348,
+          "misfit_mc_se": 0.010437450078430633,
+          "mean_spectrum_mc_se_rms": 0.006618619885757127,
+          "nested_half_misfit_difference": 0.013522642268692042,
+          "precision_target_met": false
+        },
+        {
+          "draws": 512,
+          "misfit": 0.46370034630557255,
+          "misfit_mc_se": 0.007017714935311411,
+          "mean_spectrum_mc_se_rms": 0.0046406844407953455,
+          "nested_half_misfit_difference": 0.0019473720296377395,
+          "precision_target_met": true
+        }
+      ]
+    },
+    "optimization_diagnostics": {
+      "converged": false,
+      "status": "requires_independent_restarts_and_budget_study",
+      "initialization_refinement": [
+        {
+          "success": false,
+          "iterations": 30,
+          "objective": 4.760241032912198
+        },
+        {
+          "success": false,
+          "iterations": 30,
+          "objective": 13.275455505128559
+        },
+        {
+          "success": false,
+          "iterations": 30,
+          "objective": 4.24946124651229
+        },
+        {
+          "success": false,
+          "iterations": 30,
+          "objective": -14.766627897736406
+        }
+      ]
+    },
+    "baseline_comparison": {
+      "prior_midpoint": {
+        "misfit": 0.3838779640174564,
+        "ncc_similarity": 0.9019283241687677,
+        "wasserstein_w2_mps": 332.8199427616656,
+        "vs_profile_relative_rmse_pct": 9.819462898345733,
+        "vs_profile_mape_pct": 3.9693555200659416
+      },
+      "truth_model_evaluation_only": {
+        "misfit": 0.33542442087561697,
+        "ncc_similarity": 0.9134234878133312,
+        "wasserstein_w2_mps": 310.7876804416959
+      },
+      "warnings": [
+        "predictive_point_estimate_worse_than_prior_midpoint",
+        "posterior_profile_RMSE_worse_than_informative_prior_midpoint"
+      ],
+      "validation_forward_evaluations": 2,
+      "scope": "A prior midpoint is a point baseline, not an independently calibrated posterior."
+    },
+    "empirical_parameter_coverage": "10/11",
+    "coverage_caveat": "Coverage across parameters of one synthetic model is not repeated-data calibration.",
+    "forward_evaluations": 1725,
+    "elapsed_sec": 1974.2727930545807,
+    "vs_profile_relative_rmse_pct": 10.520411327509965,
+    "vs_profile_mape_pct": 7.616424458702921
+  },
+  "field_acquisition_evaluation": {
+    "Opt 1: 1D Collinear": {
+      "station_count": 25,
+      "pair_count": 300,
+      "raw_min_distance_m": 25.0,
+      "max_distance_m": 600.0,
+      "populated_radial_bins_pct": 79.3103448275862,
+      "second_azimuthal_moment": 1.0,
+      "minimum_spacing_nyquist_proxy_hz_at_190mps": 3.8,
+      "nyquist_proxy_caveat": "Minimum-spacing proxy only; does not establish alias-free bandwidth of an irregular array."
+    },
+    "Opt 2: 2D L-Array": {
+      "station_count": 25,
+      "pair_count": 300,
+      "raw_min_distance_m": 25.0,
+      "max_distance_m": 424.26406871192853,
+      "populated_radial_bins_pct": 68.96551724137932,
+      "second_azimuthal_moment": 0.3567816499207466,
+      "minimum_spacing_nyquist_proxy_hz_at_190mps": 3.8,
+      "nyquist_proxy_caveat": "Minimum-spacing proxy only; does not establish alias-free bandwidth of an irregular array."
+    },
+    "Opt 3: Circular SPAC": {
+      "station_count": 25,
+      "pair_count": 300,
+      "raw_min_distance_m": 19.134171618254484,
+      "max_distance_m": 560.0,
+      "populated_radial_bins_pct": 65.51724137931035,
+      "second_azimuthal_moment": 4.150775987457782e-17,
+      "minimum_spacing_nyquist_proxy_hz_at_190mps": 4.964939266530232,
+      "nyquist_proxy_caveat": "Minimum-spacing proxy only; does not establish alias-free bandwidth of an irregular array."
+    },
+    "Opt 4: Hybrid Nested 2D": {
+      "station_count": 25,
+      "pair_count": 300,
+      "raw_min_distance_m": 10.920164833920778,
+      "max_distance_m": 562.6293074324791,
+      "populated_radial_bins_pct": 89.65517241379311,
+      "second_azimuthal_moment": 0.10409579563801168,
+      "minimum_spacing_nyquist_proxy_hz_at_190mps": 8.699502383416972,
+      "nyquist_proxy_caveat": "Minimum-spacing proxy only; does not establish alias-free bandwidth of an irregular array."
+    }
+  },
+  "dispersion_image_comparison": {
+    "Opt 1: 1D Collinear / plane_wave": {
+      "overlap_ncc_against_noise_free_same_geometry": 0.9591316931892625,
+      "spectral_mae_against_noise_free_same_geometry": 0.058806953789049876,
+      "reference": "noise-free plane_wave of the same geometry; noise consistency only, not method ranking"
+    },
+    "Opt 1: 1D Collinear / standing_bessel": {
+      "overlap_ncc_against_noise_free_same_geometry": 0.9453860770997965,
+      "spectral_mae_against_noise_free_same_geometry": 0.07721584942993542,
+      "reference": "noise-free standing_bessel of the same geometry; noise consistency only, not method ranking"
+    },
+    "Opt 1: 1D Collinear / mfj": {
+      "overlap_ncc_against_noise_free_same_geometry": 0.9592780548050078,
+      "spectral_mae_against_noise_free_same_geometry": 0.05881703682299367,
+      "reference": "noise-free mfj of the same geometry; noise consistency only, not method ranking"
+    },
+    "Opt 2: 2D L-Array / mfj": {
+      "overlap_ncc_against_noise_free_same_geometry": 0.9488206289392471,
+      "spectral_mae_against_noise_free_same_geometry": 0.054663798601402726,
+      "reference": "noise-free mfj of the same geometry; noise consistency only, not method ranking"
+    },
+    "Opt 3: Circular SPAC / mfj": {
+      "overlap_ncc_against_noise_free_same_geometry": 0.978874232622588,
+      "spectral_mae_against_noise_free_same_geometry": 0.03686326082220177,
+      "reference": "noise-free mfj of the same geometry; noise consistency only, not method ranking"
+    },
+    "Opt 4: Hybrid Nested 2D / mfj": {
+      "overlap_ncc_against_noise_free_same_geometry": 0.7114984540959096,
+      "spectral_mae_against_noise_free_same_geometry": 0.08089124829727652,
+      "reference": "noise-free mfj of the same geometry; noise consistency only, not method ranking"
+    }
+  },
+  "ablation_studies": {
+    "status": "not_run",
+    "reason": "benchmarks-only diagnostic run"
+  },
+  "waveform_noise_stress_test": {
+    "status": "not_run",
+    "reason": "benchmarks-only diagnostic run"
+  },
+  "quadrature_check": {
+    "densities": [
+      2.0,
+      4.0
+    ],
+    "checks": {
+      "active": {
+        "frequencies_hz": [
+          8.0,
+          20.0,
+          40.0
+        ],
+        "offsets_m": [
+          4.0,
+          20.0,
+          60.0,
+          114.0
+        ],
+        "relative_l2_change": 1.5354791466467936e-06,
+        "maximum_relative_point_change": 0.0014598945440960369
+      },
+      "passive": {
+        "frequencies_hz": [
+          1.0,
+          4.0,
+          8.0,
+          12.0
+        ],
+        "offsets_m": [
+          10.92,
+          100.0,
+          300.0,
+          562.63
+        ],
+        "relative_l2_change": 1.8669555176548655e-06,
+        "maximum_relative_point_change": 0.0007255672112478109
+      }
+    },
+    "relative_complex_gather_l2_change": 1.8669555176548655e-06,
+    "status": "passed_5pct_selected_active_and_passive_offsets",
+    "caveat": "Selected frequencies/offsets only; this does not establish convergence of every model in the prior."
+  },
+  "quadrature_check_b": {
+    "densities": [
+      2.0,
+      4.0
+    ],
+    "checks": {
+      "active": {
+        "frequencies_hz": [
+          8.0,
+          20.0,
+          40.0
+        ],
+        "offsets_m": [
+          4.0,
+          20.0,
+          60.0,
+          114.0
+        ],
+        "relative_l2_change": 4.686182604245844e-06,
+        "maximum_relative_point_change": 0.0017092838957876754
+      },
+      "passive": {
+        "frequencies_hz": [
+          1.0,
+          4.0,
+          8.0,
+          12.0
+        ],
+        "offsets_m": [
+          10.92,
+          100.0,
+          300.0,
+          562.63
+        ],
+        "relative_l2_change": 4.972569540938198e-06,
+        "maximum_relative_point_change": 0.001777342222469252
+      }
+    },
+    "relative_complex_gather_l2_change": 4.972569540938198e-06,
+    "status": "passed_5pct_selected_active_and_passive_offsets",
+    "caveat": "Selected frequencies/offsets only; this does not establish convergence of every model in the prior."
+  },
+  "research_readiness": {
+    "publishable": false,
+    "blocking_checks": [
+      "diagnostic_or_quick_run",
+      "benchmark_a_optimization_not_validated",
+      "benchmark_b_optimization_not_validated",
+      "independent_posterior_reference_missing",
+      "frequency_velocity_resolution_missing_or_failed",
+      "repeated_data_calibration_missing_or_failed",
+      "independent_waveform_validation_missing_or_failed"
+    ],
+    "meaning": "Computation completion is distinct from scientific validation. No automatic override."
+  }
+}

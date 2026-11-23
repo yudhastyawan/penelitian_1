@@ -1,0 +1,119 @@
+{
+  "status": "completed",
+  "seed": 2028,
+  "observation_sha256": "38a0104fba3964db93072d1e0554f3389495af97bae1d502477a6bd92b8314b4",
+  "source_sha256": {
+    "ablation_experiments.py": "6c5795458b51f97e503c3ed016e10031f65fc08563c2820308c34e33bd5addf2",
+    "acquisition_design.py": "06376bbb2988dc2d35131fe993325600962d2dea1060b3d4293ae6f57382f9fa",
+    "autodiff_likelihood.py": "de46ae99ba71e2cf01f22842cca49cc489fa95561f6aede726e280d2da2facc9",
+    "environment.yml": "bb92905b9e6f49909a89bf27e7a9b891987decbcba2081b0adb8138435a93dd8",
+    "forward_mfj.py": "8c515cd5b071a63b2d12ac43437ed82d7ec5dc16abe74649d38f117325701150",
+    "fusion.py": "c5b51c94432e2820276086d8a7832b17eb21eb3de88e822e47d20d48d7a961ac",
+    "generate_pdf_manuscript.py": "98a4a9f62e58ff63205d0548d51b2551574df746300244578cd537d48764f5f9",
+    "models.py": "424e820c494a6875808fa3c0a7fc8ceef7f6c8effe070c5e18675e1e19e34ee3",
+    "posterior_prediction.py": "70c0bc17f720f0137ed3155c37dc2383b8b155d4b4e67c8b519ee53b4893abef",
+    "replot_saved_results.py": "0317789482588ac52df8065157f00dddf2e525a06a148950107cb9619ed6dd41",
+    "requirements-lock.txt": "3ef1083e101d359c785c6900b7c3951667d0314c50d8b2bede634362a122ceee",
+    "requirements.txt": "fd5e99a30390aaf165611418685e0a1bb5e60f5f5bb5b695761457756c1e4232",
+    "research_quality.py": "bff6dad38ed09fb62eb827f9e0257ecc1761ca40318d233e5cee496d66f85735",
+    "run_benchmark.py": "cdd3adc6a2c4aac02331a01eb5ecace37f60cfc3a9237b3f49c8c33beb3ea654",
+    "smvi_inversion.py": "63f281e12a9401378bb2354f4050d763ee3a09dbcf065626647b90782222289b",
+    "tests/test_followup_fixes.py": "0794f35e62d1953b20f368977c9e72637b99ce1eea9fc3b285cc8ddd1c8d3c29",
+    "tests/test_reassessment.py": "f330a300d6fb03bacb258144ae7d6b4eff50cb5255b01a26c1db04053f57f899",
+    "tests/test_scientific_regressions.py": "1ef2982c0b7dcbb94f9280da4dcdcabab3043df8426a1cc84301874030de4cfe",
+    "validate_reassessment.py": "4916cf0ca9cf9044b91debcb0357cef202f903f0785623ea9bf31f9dfca029d5",
+    "visualize.py": "6bfaddf1bea987c58385322c0b5c26b6174d90db1be5d0bed3498baff82a4434"
+  },
+  "optimization_diagnostics": {
+    "converged": false,
+    "status": "requires_independent_restarts_and_budget_study",
+    "initialization_refinement": [
+      {
+        "success": false,
+        "iterations": 30,
+        "objective": -17.00807706273069
+      },
+      {
+        "success": false,
+        "iterations": 30,
+        "objective": -17.876236405448275
+      },
+      {
+        "success": false,
+        "iterations": 30,
+        "objective": -10.224175058515574
+      },
+      {
+        "success": false,
+        "iterations": 30,
+        "objective": 0.3838197450442635
+      }
+    ]
+  },
+  "iterations": 60,
+  "posterior_predictive": {
+    "misfit": 0.34060819628439976,
+    "ncc_similarity": 0.8712501850043968,
+    "wasserstein_w2_mps": 298.15690292158996,
+    "draws": 128,
+    "component_draw_counts": [
+      32,
+      32,
+      32,
+      32
+    ],
+    "misfit_mc_se": 0.009563104657765362,
+    "misfit_mc_resampling_interval95": [
+      0.3259924042793567,
+      0.3546608147470406
+    ],
+    "mean_spectrum_mc_se_rms": 0.008227874395885675,
+    "precision_target": 0.01,
+    "precision_target_met": true,
+    "bootstrap_repeats": 32,
+    "sampling": "equal draws per component, component means combined with mixture weights",
+    "scope": "Monte Carlo precision conditional on fitted mixture; not posterior calibration",
+    "precision_history": [
+      {
+        "draws": 128,
+        "misfit": 0.34060819628439976,
+        "misfit_mc_se": 0.009563104657765362,
+        "mean_spectrum_mc_se_rms": 0.008227874395885675,
+        "nested_half_misfit_difference": 0.00013875091317055999,
+        "precision_target_met": true
+      }
+    ]
+  },
+  "prior_J": 0.3838779640174564,
+  "mean_model_metrics": {
+    "misfit": 0.35298829976452295,
+    "ncc_similarity": 0.7944140553896588,
+    "wasserstein_w2_mps": 275.4998724460363
+  },
+  "best_component_metrics": {
+    "misfit": 0.25943056038508455,
+    "ncc_similarity": 0.8980629896451384,
+    "wasserstein_w2_mps": 258.53345613045593
+  },
+  "channel_diagnostics": {
+    "active_bb": {
+      "prior": 0.4047131601348555,
+      "prediction": 0.36926631004569205,
+      "delta": -0.03544685008916343,
+      "band_gt30_le42_contribution": -0.023389866691894134
+    },
+    "passive_bb": {
+      "prior": 0.22725400097000473,
+      "prediction": 0.1509656871620769,
+      "delta": -0.07628831380792783
+    }
+  },
+  "Vp_3": {
+    "mean": 1522.5792206120454,
+    "quantiles_95": [
+      1399.532090802237,
+      1726.1781970929703
+    ],
+    "truth": 1780.0
+  }
+}

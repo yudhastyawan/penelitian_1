@@ -1,0 +1,251 @@
+{
+  "source_sha256": {
+    "ablation_experiments.py": "6c5795458b51f97e503c3ed016e10031f65fc08563c2820308c34e33bd5addf2",
+    "acquisition_design.py": "06376bbb2988dc2d35131fe993325600962d2dea1060b3d4293ae6f57382f9fa",
+    "autodiff_likelihood.py": "de46ae99ba71e2cf01f22842cca49cc489fa95561f6aede726e280d2da2facc9",
+    "environment.yml": "bb92905b9e6f49909a89bf27e7a9b891987decbcba2081b0adb8138435a93dd8",
+    "forward_mfj.py": "8c515cd5b071a63b2d12ac43437ed82d7ec5dc16abe74649d38f117325701150",
+    "fusion.py": "c5b51c94432e2820276086d8a7832b17eb21eb3de88e822e47d20d48d7a961ac",
+    "generate_pdf_manuscript.py": "98a4a9f62e58ff63205d0548d51b2551574df746300244578cd537d48764f5f9",
+    "models.py": "424e820c494a6875808fa3c0a7fc8ceef7f6c8effe070c5e18675e1e19e34ee3",
+    "posterior_prediction.py": "70c0bc17f720f0137ed3155c37dc2383b8b155d4b4e67c8b519ee53b4893abef",
+    "replot_saved_results.py": "0317789482588ac52df8065157f00dddf2e525a06a148950107cb9619ed6dd41",
+    "requirements-lock.txt": "3ef1083e101d359c785c6900b7c3951667d0314c50d8b2bede634362a122ceee",
+    "requirements.txt": "fd5e99a30390aaf165611418685e0a1bb5e60f5f5bb5b695761457756c1e4232",
+    "research_quality.py": "bff6dad38ed09fb62eb827f9e0257ecc1761ca40318d233e5cee496d66f85735",
+    "run_benchmark.py": "cdd3adc6a2c4aac02331a01eb5ecace37f60cfc3a9237b3f49c8c33beb3ea654",
+    "smvi_inversion.py": "63f281e12a9401378bb2354f4050d763ee3a09dbcf065626647b90782222289b",
+    "tests/test_followup_fixes.py": "0794f35e62d1953b20f368977c9e72637b99ce1eea9fc3b285cc8ddd1c8d3c29",
+    "tests/test_reassessment.py": "f330a300d6fb03bacb258144ae7d6b4eff50cb5255b01a26c1db04053f57f899",
+    "tests/test_scientific_regressions.py": "1ef2982c0b7dcbb94f9280da4dcdcabab3043df8426a1cc84301874030de4cfe",
+    "validate_reassessment.py": "4916cf0ca9cf9044b91debcb0357cef202f903f0785623ea9bf31f9dfca029d5",
+    "visualize.py": "6bfaddf1bea987c58385322c0b5c26b6174d90db1be5d0bed3498baff82a4434"
+  },
+  "channels": {
+    "fused": {
+      "prior": 0.38387796401745633,
+      "prediction": 0.46370034630557255,
+      "delta_ncc": 0.059316265647077315,
+      "delta_w2": 0.020506116641038956,
+      "frequency_bands": [
+        {
+          "band": "1–<8 Hz",
+          "weight": 0.125,
+          "delta_ncc": -0.005244502651981991,
+          "delta_w2": -0.0007262642607448671,
+          "delta_total": -0.005970766912726858,
+          "delta_ncc_by_velocity": [
+            -0.005244502651981984,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": "8–12 Hz",
+          "weight": 0.09722222222222221,
+          "delta_ncc": -0.0036177421373285498,
+          "delta_w2": 0.0004106630294877735,
+          "delta_total": -0.0032070791078407765,
+          "delta_ncc_by_velocity": [
+            -0.003617742137328546,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": ">12–30 Hz",
+          "weight": 0.3333333333333333,
+          "delta_ncc": 0.03536516932534514,
+          "delta_w2": -0.02999942382273531,
+          "delta_total": 0.005365745502609819,
+          "delta_ncc_by_velocity": [
+            0.03738489888089567,
+            -0.0005482597645051553,
+            -0.0014714697910452816
+          ]
+        },
+        {
+          "band": ">30–42 Hz",
+          "weight": 0.2222222222222222,
+          "delta_ncc": 0.031597557840485534,
+          "delta_w2": 0.05555116489030946,
+          "delta_total": 0.08714872273079499,
+          "delta_ncc_by_velocity": [
+            0.029138885928777947,
+            -0.0006183512731195838,
+            0.003077023184827065
+          ]
+        },
+        {
+          "band": ">42–55 Hz",
+          "weight": 0.2222222222222222,
+          "delta_ncc": 0.0012157832705571808,
+          "delta_w2": -0.004730023195278108,
+          "delta_total": -0.0035142399247209254,
+          "delta_ncc_by_velocity": [
+            0.0011938423786123646,
+            -0.0001934510909280477,
+            0.00021539198287294915
+          ]
+        }
+      ],
+      "velocity_bins_mps": [
+        "≤680",
+        ">680–1200",
+        ">1200"
+      ],
+      "delta_ncc_by_velocity": [
+        0.058855382398975455,
+        -0.0013600621285527867,
+        0.0018209453766547324
+      ]
+    },
+    "active_bb": {
+      "prior": 0.4047131601348554,
+      "prediction": 0.5139177554789235,
+      "delta_ncc": 0.08410291748146814,
+      "delta_w2": 0.02510167786259991,
+      "frequency_bands": [
+        {
+          "band": "8–12 Hz",
+          "weight": 0.10638297872340426,
+          "delta_ncc": 0.005770160809873587,
+          "delta_w2": 0.0011788530731533873,
+          "delta_total": 0.006949013883026975,
+          "delta_ncc_by_velocity": [
+            0.005770160809873555,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": ">12–30 Hz",
+          "weight": 0.3829787234042553,
+          "delta_ncc": 0.040632322203588034,
+          "delta_w2": -0.03446742311548312,
+          "delta_total": 0.006164899088104896,
+          "delta_ncc_by_velocity": [
+            0.04295286254400779,
+            -0.0006299154741123062,
+            -0.001690624866307345
+          ]
+        },
+        {
+          "band": ">30–42 Hz",
+          "weight": 0.2553191489361702,
+          "delta_ncc": 0.036303577093323804,
+          "delta_w2": 0.06382474263993004,
+          "delta_total": 0.10012831973325383,
+          "delta_ncc_by_velocity": [
+            0.03347872000327679,
+            -0.0007104461435842027,
+            0.003535303233631096
+          ]
+        },
+        {
+          "band": ">42–55 Hz",
+          "weight": 0.2553191489361702,
+          "delta_ncc": 0.0013968573746827183,
+          "delta_w2": -0.005434494735000379,
+          "delta_total": -0.00403763736031766,
+          "delta_ncc_by_velocity": [
+            0.0013716486903205892,
+            -0.0002222629555343527,
+            0.00024747163989657976
+          ]
+        }
+      ],
+      "velocity_bins_mps": [
+        "≤680",
+        ">680–1200",
+        ">1200"
+      ],
+      "delta_ncc_by_velocity": [
+        0.08357339204747871,
+        -0.0015626245732308615,
+        0.0020921500072203303
+      ]
+    },
+    "passive_bb": {
+      "prior": 0.22725400097000473,
+      "prediction": 0.14484839272913408,
+      "delta_ncc": -0.07554642266007833,
+      "delta_w2": -0.006859185580792317,
+      "frequency_bands": [
+        {
+          "band": "1–<8 Hz",
+          "weight": 0.6136363636363636,
+          "delta_ncc": -0.02574574029154796,
+          "delta_w2": -0.0035652972800202572,
+          "delta_total": -0.029311037571568214,
+          "delta_ncc_by_velocity": [
+            -0.02574574029154792,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "band": "8–12 Hz",
+          "weight": 0.38636363636363635,
+          "delta_ncc": -0.04980068236853038,
+          "delta_w2": -0.00329388830077206,
+          "delta_total": -0.053094570669302434,
+          "delta_ncc_by_velocity": [
+            -0.04980068236853033,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "velocity_bins_mps": [
+        "≤680",
+        ">680–1200",
+        ">1200"
+      ],
+      "delta_ncc_by_velocity": [
+        -0.07554642266007824,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "components": [
+    {
+      "component": 1,
+      "weight": 0.25,
+      "draws": 128,
+      "center_J": 0.4690568972639723,
+      "conditional_mean_spectrum_J": 0.4223661657836777,
+      "mean_draw_J": 0.558514541533113,
+      "leave_one_component_out_J": 0.43913546788027646
+    },
+    {
+      "component": 2,
+      "weight": 0.25,
+      "draws": 128,
+      "center_J": 0.6267908372921353,
+      "conditional_mean_spectrum_J": 0.611827635620158,
+      "mean_draw_J": 0.68061503334182,
+      "leave_one_component_out_J": 0.3997250022370338
+    },
+    {
+      "component": 3,
+      "weight": 0.25,
+      "draws": 128,
+      "center_J": 0.4189119765030004,
+      "conditional_mean_spectrum_J": 0.38548195585775985,
+      "mean_draw_J": 0.48975060923581704,
+      "leave_one_component_out_J": 0.4720112793823159
+    },
+    {
+      "component": 4,
+      "weight": 0.25,
+      "draws": 128,
+      "center_J": 0.3415659988990893,
+      "conditional_mean_spectrum_J": 0.33391685381554936,
+      "mean_draw_J": 0.46483880075386147,
+      "leave_one_component_out_J": 0.5059347596202487
+    }
+  ],
+  "scope": "In-sample diagnostics of the frozen v6 fit. Channel spectra use their own observations and native support, without channel-specific refits. Velocity contributions partition NCC only; Wasserstein is reported by frequency."
+}

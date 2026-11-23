@@ -1,0 +1,56 @@
+# Python environments, caches and build products
+/.venv/
+/venv/
+/env/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.py[cod]
+*.nbc
+*.nbi
+*.so
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+
+# Editor, OS and scratch files
+.DS_Store
+._*
+.vscode/
+.idea/
+*.swp
+/tmp/
+*.log
+
+# Historical backups, scratch runs and replay outputs
+/archive_*/
+/audit_followup/
+/diagnostics_review/
+/diagnostics_review_v[0-5]/
+/results/
+/results_*/
+!/results_v6/
+!/results_v6_validation/
+
+# Preserve the current manuscript and its source assets
+/output/*
+!/output/pdf/
+/output/pdf/*
+!/output/pdf/figures/
+!/output/pdf/Naskah_Lengkap_Penelitian_MFJ_SMVI_v6_Edisi_Terintegrasi.md
+!/output/pdf/Naskah_Lengkap_Penelitian_MFJ_SMVI_v6_Edisi_Terintegrasi.pdf
