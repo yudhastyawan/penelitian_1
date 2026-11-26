@@ -111,6 +111,9 @@ model, ketidakpastian noise, dan validasi posterior.
 
 ## Referensi fungsi dan persamaan
 
+- [Tutorial metodologi MFJ–SMVI v6](docs/TUTORIAL_METODOLOGI_MFJ_SMVI.md)
+  mengikuti urutan eksperimen dari model dan sintesis gelombang hingga
+  interpretasi hasil A/B, dengan persamaan inti dan latihan dari data tersimpan.
 - [Indeks fungsi](docs/REFERENSI_FUNGSI.md) menghubungkan peran setiap fungsi
   dengan definisi kode, persamaan yang diterapkan, dan rujukannya.
 - [Persamaan sesuai implementasi](docs/PERSAMAAN_KODE.md) memuat formula untuk
